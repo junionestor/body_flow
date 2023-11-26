@@ -12,7 +12,7 @@ Este é um aplicativo Flutter projetado para fornecer um guia prático de exerc�
 1. **Clone o Repositório:**
    ```bash
    git clone hhttps://github.com/junionestor/body_flow.git
-   cd MyGym
+   cd body_flow
    ```
 2. **Instale as Dependências**
     ```bash

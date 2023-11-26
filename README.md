@@ -26,3 +26,9 @@ cd body_flow
 ```bash
 flutter pub get
 ```
+
+3.  **Executar a Aplicação**
+
+```bash
+flutter run
+```

@@ -11,10 +11,14 @@ class ExercicioBraco extends StatefulWidget {
   const ExercicioBraco({super.key});
 
   @override
-  _ExercicioBraco createState() => _ExercicioBraco();
+  State<ExercicioBraco> createState() => _ExercicioBraco();
 }
 
 class _ExercicioBraco extends State<ExercicioBraco> {
+  void _navigateToPage(Widget page) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
+  }
+
   int _selectedIndex = 0;
 
   final List<Widget> _paginas = [
@@ -29,6 +33,52 @@ class _ExercicioBraco extends State<ExercicioBraco> {
 
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (_) => _paginas[index]));
+  }
+
+  Widget _buildExerciseContainer({
+    required String imagePath,
+    required String title,
+    required Widget page,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE93927).withOpacity(1.0),
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Image(
+              image: AssetImage('assets/images/treinobraco.webp'),
+              width: 115,
+              height: 115),
+          Expanded(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 20, fontFamily: 'Roboto-Thin'),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFE21B10).withOpacity(1.0),
+            ),
+            onPressed: () {
+              _navigateToPage(page);
+            },
+            child: const Text(
+              'Avançar',
+              style: TextStyle(
+                  color: Colors.white, fontSize: 14, fontFamily: 'Roboto-Thin'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -57,7 +107,8 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.symmetric(vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
+                    color:
+                        Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -72,12 +123,18 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         child: Text(
                           'Flexão de braço',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
+                            backgroundColor:
+                                Color(int.parse('E21B10', radix: 16))
+                                    .withOpacity(1.0)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -88,7 +145,11 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         },
                         child: const Text(
                           'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                     ],
@@ -98,7 +159,8 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.symmetric(vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
+                    color:
+                        Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -114,12 +176,18 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         child: Text(
                           'Flexão de braço inclinada',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
+                            backgroundColor:
+                                Color(int.parse('E21B10', radix: 16))
+                                    .withOpacity(1.0)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -130,7 +198,11 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         },
                         child: const Text(
                           'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                     ],
@@ -140,7 +212,8 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.symmetric(vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
+                    color:
+                        Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -155,12 +228,18 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         child: Text(
                           'Prancha de antebraço',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
+                            backgroundColor:
+                                Color(int.parse('E21B10', radix: 16))
+                                    .withOpacity(1.0)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -170,7 +249,11 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         },
                         child: const Text(
                           'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                     ],
@@ -180,7 +263,8 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.symmetric(vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
+                    color:
+                        Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -195,12 +279,18 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         child: Text(
                           'Rosca martelo',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 19.5,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 19.5,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
+                            backgroundColor:
+                                Color(int.parse('E21B10', radix: 16))
+                                    .withOpacity(1.0)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -211,7 +301,11 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         },
                         child: const Text(
                           'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                     ],
@@ -221,7 +315,8 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                   padding: EdgeInsets.all(10.0),
                   margin: EdgeInsets.symmetric(vertical: 10.0),
                   decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
+                    color:
+                        Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
@@ -236,12 +331,18 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         child: Text(
                           'Rosca direta',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 19.5,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 19.5,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
+                            backgroundColor:
+                                Color(int.parse('E21B10', radix: 16))
+                                    .withOpacity(1.0)),
                         onPressed: () {
                           Navigator.push(
                               context,
@@ -252,7 +353,11 @@ class _ExercicioBraco extends State<ExercicioBraco> {
                         },
                         child: const Text(
                           'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Roboto-Thin',
+                          ),
                         ),
                       ),
                     ],
@@ -267,8 +372,14 @@ class _ExercicioBraco extends State<ExercicioBraco> {
         backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(color: Colors.white,fontFamily: 'Roboto-Thin',),
-        unselectedLabelStyle: const TextStyle(color: Colors.grey,fontFamily: 'Roboto-Thin',),
+        selectedLabelStyle: const TextStyle(
+          color: Colors.white,
+          fontFamily: 'Roboto-Thin',
+        ),
+        unselectedLabelStyle: const TextStyle(
+          color: Colors.grey,
+          fontFamily: 'Roboto-Thin',
+        ),
         currentIndex: _selectedIndex,
         onTap: _itemClicado,
         items: const <BottomNavigationBarItem>[

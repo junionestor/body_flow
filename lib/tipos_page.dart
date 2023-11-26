@@ -1,6 +1,7 @@
 import 'package:body_flow/ExercicioAbdomen/exercicioabdomen_pages.dart';
 import 'package:body_flow/ExercicioBraco/exerciciobraco_page.dart';
 import 'package:body_flow/ExercicioPerna/exercicioperna_pages.dart';
+import 'package:body_flow/Navigator/bottom_navigation.dart';
 import 'package:body_flow/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,19 +13,6 @@ class TiposdeExercicios extends StatefulWidget {
 }
 
 class _TiposdeExerciciosState extends State<TiposdeExercicios> {
-  int _selectedIndex = 1;
-
-  final List<Widget> _paginas = const [HomePage(), TiposdeExercicios()];
-
-  void _itemClicado(int index) {
-    if (index == _selectedIndex) return;
-    setState(() {
-      _selectedIndex = index;
-    });
-
-    _navigateToPage(_paginas[index]);
-  }
-
   void _navigateToPage(Widget page) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
   }
@@ -122,31 +110,7 @@ class _TiposdeExerciciosState extends State<TiposdeExercicios> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFFE21B10).withOpacity(1.0),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(
-          color: Colors.white,
-          fontFamily: 'Roboto-Thin',
-        ),
-        unselectedLabelStyle: const TextStyle(
-          color: Colors.grey,
-          fontFamily: 'Roboto-Thin',
-        ),
-        currentIndex: _selectedIndex,
-        onTap: _itemClicado,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Página Inicial',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.sports_gymnastics),
-            label: 'Tipos de Exercício',
-          ),
-        ],
-      ),
+      bottomNavigationBar: const BottomNavigation(),
     );
   }
 }

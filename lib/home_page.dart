@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => TiposdeExercicios(),
+            builder: (BuildContext context) => const TiposdeExercicios(),
           ),
         );
       },
@@ -72,7 +72,7 @@ class HomePage extends StatelessWidget {
                 fontFamily: 'Roboto-Thin',
               ),
             ),
-            const SizedBox(width: 4),
+            SizedBox(width: 4),
             Icon(
               Icons.arrow_circle_right_outlined,
               color: Colors.white,

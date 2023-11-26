@@ -8,7 +8,7 @@ class TiposdeExercicios extends StatefulWidget {
   const TiposdeExercicios({Key? key}) : super(key: key);
 
   @override
-  _TiposdeExerciciosState createState() => _TiposdeExerciciosState();
+  State<TiposdeExercicios> createState() => _TiposdeExerciciosState();
 }
 
 class _TiposdeExerciciosState extends State<TiposdeExercicios> {
@@ -104,17 +104,17 @@ class _TiposdeExerciciosState extends State<TiposdeExercicios> {
                   _buildExercicioContainer(
                     'assets/images/treinobraco.webp',
                     'Exercícios para braço',
-                    ExercicioBraco(),
+                    const ExercicioBraco(),
                   ),
                   _buildExercicioContainer(
                     'assets/images/treinoperna.webp',
                     'Exercícios para perna',
-                    ExercicioPerna(),
+                    const ExercicioPerna(),
                   ),
                   _buildExercicioContainer(
                     'assets/images/treinoabdominal.webp',
                     'Exercícios para abdômen',
-                    ExercicioAbdomen(),
+                    const ExercicioAbdomen(),
                   ),
                 ],
               ),

@@ -1,23 +1,23 @@
+import 'package:flutter/material.dart';
 import 'package:body_flow/ExercicioAbdomen/abdminalobliquo_pages.dart';
 import 'package:body_flow/ExercicioAbdomen/abdominalbicicleta_pages.dart';
 import 'package:body_flow/ExercicioAbdomen/abdominalinferior_pages.dart';
 import 'package:body_flow/ExercicioAbdomen/abdominaltradicinal_pages.dart';
 import 'package:body_flow/ExercicioAbdomen/ponte_pages.dart';
-import 'package:flutter/material.dart';
 import 'package:body_flow/home_page.dart';
 import 'package:body_flow/tipos_page.dart';
 
 class ExercicioAbdomen extends StatefulWidget {
-  const ExercicioAbdomen({super.key});
+  const ExercicioAbdomen({Key? key}) : super(key: key);
 
   @override
-  _ExercicioAbdomen createState() => _ExercicioAbdomen();
+  State<ExercicioAbdomen> createState() => _ExercicioAbdomen();
 }
 
 class _ExercicioAbdomen extends State<ExercicioAbdomen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _paginas = [
+  final List<Widget> _paginas = const [
     HomePage(),
     TiposdeExercicios(),
   ];
@@ -27,251 +27,140 @@ class _ExercicioAbdomen extends State<ExercicioAbdomen> {
       _selectedIndex = index;
     });
 
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (_) => _paginas[index]));
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => _paginas[index]));
+  }
+
+  Widget _buildExerciseContainer({
+    required String imagePath,
+    required String title,
+    required VoidCallback onPressed,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE93927).withOpacity(1.0),
+        border: Border.all(),
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Image(image: AssetImage('assets/images/treinoabdominal.webp'), width: 115, height: 115),
+          Expanded(
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'Roboto-Thin'),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFE21B10).withOpacity(1.0),
+            ),
+            onPressed: onPressed,
+            child: const Text(
+              'Avançar',
+              style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'Roboto-Thin'),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(int.parse('F87454', radix: 16)).withOpacity(1.0),
+      backgroundColor: const Color(0xFFF87454).withOpacity(1.0),
       appBar: AppBar(
         title: const Text(
           'Exercícios de Abdômen',
-          style: TextStyle(
-            color: Colors.white,
-            fontFamily: 'Roboto-Thin',
-          ),
+          style: TextStyle(color: Colors.white, fontFamily: 'Roboto-Thin'),
         ),
-        backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0),
+        backgroundColor: const Color(0xFFE21B10).withOpacity(1.0),
         centerTitle: true,
       ),
-      body: ListView(children: [
-        Center(
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                          image:
-                              AssetImage('assets/images/treinoabdominal.webp'),
-                          width: 115,
-                          height: 115),
-                      const Expanded(
-                        child: Text(
-                          'Abdominal Tradicional',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+      body: ListView(
+        children: [
+          Center(
+            child: Container(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _buildExerciseContainer(
+                    imagePath: 'assets/images/treinoabdominal.webp',
+                    title: 'Abdominal Tradicional',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const AbdominalTradicional(),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    AbdominalTradicional(),
-                              ));
-                        },
-                        child: const Text(
-                          'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                          image:
-                              AssetImage('assets/images/abdominalobliquo.webp'),
-                          width: 115,
-                          height: 115),
-                      const Expanded(
-                        child: Text(
-                          'Abdominal oblíquo',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+                  _buildExerciseContainer(
+                    imagePath: 'assets/images/abdominalobliquo.webp',
+                    title: 'Abdominal Oblíquo',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const AbdominalObliquo(),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    AbdominalObliquo(),
-                              ));
-                        },
-                        child: const Text(
-                          'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                          image: AssetImage(
-                              'assets/images/abdominalbicicleta.webp'),
-                          width: 115,
-                          height: 115),
-                      const Expanded(
-                        child: Text(
-                          'Abdominal bicicleta',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 20,fontFamily: 'Roboto-Thin',),
+                  _buildExerciseContainer(
+                    imagePath: 'assets/images/abdominalbicicleta.webp',
+                    title: 'Abdominal Bicicleta',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const AbdominalBicicleta(),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    AbdominalBicicleta(),
-                              ));
-                        },
-                        child: const Text(
-                          'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                          image: AssetImage(
-                              'assets/images/abdominalinferior.webp'),
-                          width: 115,
-                          height: 115),
-                      const Expanded(
-                        child: Text(
-                          'Abdominal inferior',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 19.5,fontFamily: 'Roboto-Thin',),
+                  _buildExerciseContainer(
+                    imagePath: 'assets/images/abdominalinferior.webp',
+                    title: 'Abdominal Inferior',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const AbdominalInferior(),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    AbdominalInferior(),
-                              ));
-                        },
-                        child: const Text(
-                          'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.symmetric(vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color: Color(int.parse('E93927', radix: 16)).withOpacity(1.0),
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Image(
-                          image: AssetImage('assets/images/ponte.webp'),
-                          width: 115,
-                          height: 115),
-                      const Expanded(
-                        child: Text(
-                          'Prancha isométrica ou ponte',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white, fontSize: 19.5,fontFamily: 'Roboto-Thin',),
+                  _buildExerciseContainer(
+                    imagePath: 'assets/images/ponte.webp',
+                    title: 'Prancha Isométrica ou Ponte',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => const Ponte(),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => Ponte(),
-                              ));
-                        },
-                        child: const Text(
-                          'Avançar',
-                          style: TextStyle(color: Colors.white, fontSize: 14,fontFamily: 'Roboto-Thin',),
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                )
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(int.parse('E21B10', radix: 16)).withOpacity(1.0),
+        backgroundColor: const Color(0xFFE21B10).withOpacity(1.0),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
-        selectedLabelStyle: const TextStyle(color: Colors.white,fontFamily: 'Roboto-Thin',),
-        unselectedLabelStyle: const TextStyle(color: Colors.grey,fontFamily: 'Roboto-Thin',),
+        selectedLabelStyle: const TextStyle(color: Colors.white, fontFamily: 'Roboto-Thin'),
+        unselectedLabelStyle: const TextStyle(color: Colors.grey, fontFamily: 'Roboto-Thin'),
         currentIndex: _selectedIndex,
         onTap: _itemClicado,
         items: const <BottomNavigationBarItem>[

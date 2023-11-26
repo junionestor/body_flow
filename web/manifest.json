@@ -1,6 +1,6 @@
 {
-    "name": "my_gym",
-    "short_name": "my_gym",
+    "name": "body_flow",
+    "short_name": "body_flow",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

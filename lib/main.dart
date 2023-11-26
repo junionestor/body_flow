@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'home_page.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+main() => runApp(const MyApp());
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
     );
   }
 }

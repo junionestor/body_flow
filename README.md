@@ -1,4 +1,4 @@
-# My Gym
+# BodyFlow
 # Calisthenics Workout Guide App
 
 Este é um aplicativo Flutter projetado para fornecer um guia prático de exercícios físicos de calistenia. A calistenia é uma forma de treinamento que utiliza o peso corporal para desenvolver força, resistência e flexibilidade.
@@ -11,7 +11,7 @@ Este é um aplicativo Flutter projetado para fornecer um guia prático de exerc�
 
 1. **Clone o Repositório:**
    ```bash
-   git clone https://github.com/junionestor/MyGym.git
+   git clone hhttps://github.com/junionestor/body_flow.git
    cd MyGym
    ```
 2. **Instale as Dependências**
